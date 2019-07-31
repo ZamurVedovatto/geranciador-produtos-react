@@ -6,7 +6,8 @@ class Category extends Component {
     super(props);
     this.loadData = this.loadData.bind(this)
     this.state = {
-      products: []
+      products: [],
+      category: {}
     }
   }
 
@@ -15,6 +16,13 @@ class Category extends Component {
     .then(res => {
       this.setState({
         products: res.data
+      })
+    })
+
+    axios.get(`http://localhost:3001/categories/`+id)
+    .then(res => {
+      this.setState({
+        category: res.data
       })
     })
   }
@@ -38,7 +46,11 @@ class Category extends Component {
   render () {
     return (
       <div>
-        <h4>Category {this.props.match.params.catId}</h4>
+        <nav aria-label="breadcrumb">
+          <ol className="breadcrumb">
+            <li className="breadcrumb-item active" aria-current="page"><span style={customStyles.fz08rem}>Category</span> {this.state.category.category}</li>
+          </ol>
+        </nav>
         {this.state.products.map(this.renderProduto)}
       </div>
     )
@@ -46,3 +58,10 @@ class Category extends Component {
 }
 
 export default Category
+
+
+const customStyles = {
+  "fz08rem": {
+    "fontSize": ".8rem"
+  }
+}

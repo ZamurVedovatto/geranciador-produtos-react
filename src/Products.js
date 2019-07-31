@@ -43,7 +43,7 @@ class Products extends Component {
           </ul>
         </div>
         <div className="col-md-6 col-sm-12">
-          <h1>Products</h1>
+          <h4 className="text-info">Products</h4>
           <Route exact path={match.url} component={ProductsHome} />
           <Route exact path={match.url + '/categories/:catId'} component={Category} />
         </div>
