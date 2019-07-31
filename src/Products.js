@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Route, Link } from 'react-router-dom'
 import axios from 'axios'
+import Api from './api'
 import ProductsHome from './ProductsHome'
 import Category from './Category'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -30,8 +31,7 @@ class Products extends Component {
   }
 
   loadCategories = () => {
-    axios
-    .get('http://localhost:3001/categories')
+    Api.loadCategories()
     .then(res => {
       this.setState({
         categories: res.data
@@ -40,8 +40,7 @@ class Products extends Component {
   }
 
   removeCategory = cat => {
-    axios
-      .delete('http://localhost:3001/categories/' +  cat.id)
+    Api.deleteCategory(cat.id)
       .then(() => {
         this.loadCategories();
         this.notifySuccess();

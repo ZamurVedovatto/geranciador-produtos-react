@@ -37,6 +37,30 @@ const { match } = this.props
 
 ### 5. Load category data from server
 ```
+{
+  "products": [
+    {
+      "id": 1,
+      "category": 1,
+      "description": "Pão"
+    }
+  ],
+  "categories": [
+    {
+      "id": 1,
+      "category": "Food"
+    }
+  ]
+}
+```
+
+```
+npm i -g json-server
+json-server --watch db.json --port 3001
+
+```
+
+```
 componentDidMount() {
   axios
     .get('http://localhost:3001/categories')
@@ -111,4 +135,39 @@ removeCategory = cat => {
   <FontAwesomeIcon className="mr-2" icon={faBomb} size="sm" />
 </button>
 
+```
+
+### 8. Rearrange the API code
+```
+import axios from 'axios'
+
+const api = axios.create({
+  baseURL: 'http://localhost:3001/'
+})
+
+const apis = {
+  loadCategories: () => api.get('categories'),
+  deleteCategory: (id) => api.delete('categories/' + id)
+}
+
+export default apis
+```
+
+```
+  loadCategories = () => {
+    Api.loadCategories()
+    .then(res => {
+      this.setState({
+        categories: res.data
+      })
+    })
+  }
+
+```
+
+### 8. Rearrange  code
+```
+```
+
+```
 ```

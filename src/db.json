@@ -35,8 +35,28 @@
       "category": "Sport"
     },
     {
-      "category": "asasa",
+      "category": "asas",
       "id": 4
+    },
+    {
+      "category": "asas",
+      "id": 5
+    },
+    {
+      "category": "trt",
+      "id": 7
+    },
+    {
+      "category": "yty",
+      "id": 8
+    },
+    {
+      "category": "uyu",
+      "id": 9
+    },
+    {
+      "category": "uyu",
+      "id": 10
     }
   ]
 }
