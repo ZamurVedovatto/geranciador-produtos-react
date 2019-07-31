@@ -95,3 +95,20 @@ render () {
   )
 }
 ```
+
+### 7. Removing categories
+```
+removeCategory = cat => {
+  axios
+    .delete('http://localhost:3001/categories/' +  cat.id)
+    .then(() => {
+      this.loadCategories();
+      this.notifySuccess();
+    })
+}
+
+<button className="btn p-0" onClick={ ()=>this.removeCategory(cat) }>
+  <FontAwesomeIcon className="mr-2" icon={faBomb} size="sm" />
+</button>
+
+```
