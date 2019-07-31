@@ -22,3 +22,10 @@ import {
 /* inside the Product component */
 <Route exact path={this.props.match.url} component={ProductsHome} />
 ```
+
+### 3. Mapping Categories and using URL parameters
+```
+const { match } = this.props
+<Link to='products/categories/1'>Category 1</Link>
+<Route exact path={match.url + '/categories/:catId'} component={Category} />
+```
