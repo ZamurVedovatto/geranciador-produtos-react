@@ -1,15 +1,35 @@
 {
   "products": [
+    {
+      "id": 1,
+      "category": 1,
+      "description": "Pão"
+    },
+    {
+      "id": 2,
+      "category": 1,
+      "description": "Pão Doce"
+    },
+    {
+      "id": 3,
+      "category": 2,
+      "description": "Sabão"
+    },
+    {
+      "id": 4,
+      "category": 3,
+      "description": "Raquete"
+    }
 
   ],
   "categories": [
     {
       "id": 1,
-      "category": "Cleaner"
+      "category": "Food"
     },
     {
       "id": 2,
-      "category": "Food"
+      "category": "Cleaner"
     },
     {
       "id": 3,
