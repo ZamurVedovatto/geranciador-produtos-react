@@ -29,3 +29,9 @@ const { match } = this.props
 <Link to='products/categories/1'>Category 1</Link>
 <Route exact path={match.url + '/categories/:catId'} component={Category} />
 ```
+
+### 4. Recover URL parameters
+```
+<h6>Category {JSON.stringify(this.props.match)}</h6>
+<h6>Category {this.props.match.params.catId}</h6>
+```

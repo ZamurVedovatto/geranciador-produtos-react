@@ -4,7 +4,7 @@ class Category extends Component {
   render () {
     return (
       <div>
-        <h1>Category</h1>
+        <h6>Category {this.props.match.params.catId}</h6>
       </div>
     )
   }
