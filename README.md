@@ -1,8 +1,8 @@
 # Product Management
 
-## React app
+## **React app**
 
-### First route configuration
+### 1. First route configuration
 
 ```
 import {
@@ -14,4 +14,11 @@ import {
 <Router>
 <Route exact path='/' component={Home} />
 <Link className="nav-link text-light" to="/about">About</Link>
+```
+
+
+### 2. Products route
+```
+/* inside the Product component */
+<Route exact path={this.props.match.url} component={ProductsHome} />
 ```

@@ -7,6 +7,7 @@ import {
 
 import Home from './Home'
 import About from './About'
+import Products from './Products'
 
 function App() {
   return (
@@ -19,7 +20,7 @@ function App() {
               <Link className="nav-link text-light" to="/">Home</Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link text-light" to="/">Products</Link>
+              <Link className="nav-link text-light" to="/products">Products</Link>
             </li>
             <li className="nav-item">
               <Link className="nav-link text-light" to="/about">About</Link>
@@ -28,6 +29,7 @@ function App() {
         </nav>
         <div className="container mt-3">
           <Route exact path='/' component={Home} />
+          <Route path='/products' component={Products} />
           <Route exact path='/about' component={About} />
         </div>
       </div>
