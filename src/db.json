@@ -1,0 +1,19 @@
+{
+  "products": [
+
+  ],
+  "categories": [
+    {
+      "id": 1,
+      "category": "Cleaner"
+    },
+    {
+      "id": 2,
+      "category": "Food"
+    },
+    {
+      "id": 3,
+      "category": "Sport"
+    }
+  ]
+}

@@ -16,7 +16,6 @@ import {
 <Link className="nav-link text-light" to="/about">About</Link>
 ```
 
-
 ### 2. Products route
 ```
 /* inside the Product component */
@@ -34,4 +33,28 @@ const { match } = this.props
 ```
 <h6>Category {JSON.stringify(this.props.match)}</h6>
 <h6>Category {this.props.match.params.catId}</h6>
+```
+
+### 5. Load category data from server
+```
+componentDidMount() {
+  axios
+    .get('http://localhost:3001/categories')
+    .then(res => {
+      this.setState({
+        categories: res.data
+      })
+    })
+}
+
+renderCategory(cat) {
+  return (
+    <li key={cat.id}>
+      <Link to={`/products/categories/${cat.id}`}>{cat.category}</Link>
+    </li>
+  )
+}
+
+{ categories.map(this.renderCategory) }
+
 ```

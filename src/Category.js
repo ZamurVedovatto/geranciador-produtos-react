@@ -2,9 +2,10 @@ import React, { Component } from 'react'
 
 class Category extends Component {
   render () {
+    const { catId } = this.props.match.params
     return (
       <div>
-        <h6>Category {this.props.match.params.catId}</h6>
+        <h6>Category {catId}</h6>
       </div>
     )
   }
