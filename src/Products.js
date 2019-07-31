@@ -1,58 +1,27 @@
 import React, { Component } from 'react'
 import { Route, Link } from 'react-router-dom'
-import axios from 'axios'
-import Api from './api'
 import ProductsHome from './ProductsHome'
 import Category from './Category'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBomb } from '@fortawesome/free-solid-svg-icons'
-import { toast } from 'react-toastify'
-import 'react-toastify/dist/ReactToastify.css'
-toast.configure({
-  autoClose: 2000,
-  draggable: false,
-  pauseOnFocusLoss: true
-});
 
 class Products extends Component {
+
   constructor(props) {
-    super(props)
-    this.state = {
-      categories: []
-    }
+    super(props);
+
+    this.renderCategory = this.renderCategory.bind(this)
+    this.handleNewCategory = this.handleNewCategory.bind(this)
   }
 
   componentDidMount() {
-    this.loadCategories();
+    this.props.loadCategories();
   }
 
-  notifySuccess = () => {
-    toast("Success");
-  }
-
-  loadCategories = () => {
-    Api.loadCategories()
-    .then(res => {
-      this.setState({
-        categories: res.data
-      })
-    })
-  }
-
-  removeCategory = cat => {
-    Api.deleteCategory(cat.id)
-      .then(() => {
-        this.loadCategories();
-        this.notifySuccess();
-      })
-  }
-
-
-
-  renderCategory = (cat) => {
+  renderCategory (cat) {
     return (
       <li key={cat.id}>
-        <button className="btn p-0" onClick={ ()=>this.removeCategory(cat) }>
+        <button className="btn p-0" onClick={ () => this.props.removeCategory(cat) }>
           <FontAwesomeIcon className="mr-2" icon={faBomb} size="sm" />
         </button>
         <Link to={`/products/categories/${cat.id}`}>{cat.category}</Link>
@@ -60,23 +29,17 @@ class Products extends Component {
     )
   }
 
-  handleNewCategory = key => {
+  handleNewCategory (key) {
     if (key.keyCode === 13) {
-      axios
-        .post('http://localhost:3001/categories', {
-          category: this.refs.category.value
-        })
-        .then(() => {
-          this.refs.category.value = ''
-          this.loadCategories();
-        })
-
+      this.props.createCategory({
+        category: this.refs.category
+      })
+      this.refs.category.value = ''
     }
   }
 
   render() {
-    const { match } = this.props
-    const { categories } = this.state
+    const { match, categories } = this.props
 
     return (
       <div className="row">

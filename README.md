@@ -165,9 +165,18 @@ export default apis
 
 ```
 
-### 8. Rearrange  code
+### 8. Rearrange code
 ```
-```
-
-```
+<Route exact path='/products' render={ (props) => {
+          return (
+            <Products
+              {...props}
+              loadCategories={this.loadCategories}
+              removeCategory={this.removeCategory}
+              createCategory={this.createCategory}
+              categories={this.state.categories}
+            />)
+          }
+        }
+        />
 ```
