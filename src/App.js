@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import {
   BrowserRouter as Router,
   Route,
@@ -12,11 +12,12 @@ import Products from './Products'
 class App extends Component {
 
   constructor(props) {
-    super(props);
+    super(props)
 
     this.loadCategories = this.loadCategories.bind(this)
     this.removeCategory = this.removeCategory.bind(this)
     this.createCategory = this.createCategory.bind(this)
+    this.editCategory = this.editCategory.bind(this)
 
     this.state = {
       categories: []
@@ -35,12 +36,17 @@ class App extends Component {
   removeCategory (cat) {
     this.props.api.deleteCategory(cat.id)
       .then(() => {
-        this.loadCategories();
+        this.loadCategories()
       })
   }
 
   createCategory (category) {
     this.props.api.createCategory(category)
+      .then(() => this.loadCategories())
+  }
+
+  editCategory (category) {
+    this.props.api.editCategory(category)
       .then(() => this.loadCategories())
   }
 
@@ -65,13 +71,14 @@ class App extends Component {
           <div className="container mt-3">
             <Route exact path='/' component={Home} />
             <Route path='/about' component={About} />
-            <Route exact path='/products' render={ (props) => {
+            <Route path='/products' render={ (props) => {
               return (
                 <Products
                   {...props}
                   loadCategories={this.loadCategories}
                   removeCategory={this.removeCategory}
                   createCategory={this.createCategory}
+                  editCategory={this.editCategory}
                   categories={this.state.categories}
                 />)
               }
@@ -80,7 +87,7 @@ class App extends Component {
           </div>
         </div>
       </Router>
-    );
+    )
   }
 }
 

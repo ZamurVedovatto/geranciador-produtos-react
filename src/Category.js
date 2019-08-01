@@ -12,6 +12,7 @@ class Category extends Component {
   }
 
   loadData(id) {
+    console.log(id)
     axios.get(`http://localhost:3001/products?category=`+id)
     .then(res => {
       this.setState({

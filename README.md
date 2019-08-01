@@ -180,3 +180,69 @@ export default apis
         }
         />
 ```
+
+### 8. Editing category
+```
+/* api.js */
+const apis = {
+  ...
+  editCategory: (category) => api.put('categories/' + category.id, category)
+}
+
+
+/* App.js */
+editCategory (category) {
+  this.props.api.editCategory(category)
+    .then(() => this.loadCategories())
+}
+
+
+/* Products.js */
+renderCategory = cat => {
+  return (
+    <li key={cat.id}>
+      {this.state.editingCategory === cat.id &&
+        <div className='input-group'>
+          <div className="input-group-btn d-flex">
+            <input ref={'cat-' + cat.id} onKeyUp={this.handleEditCategory} className="form-control" type="text" defaultValue={cat.category} />
+            <button className="btn p-0" onClick={this.cancelEditing} >
+              <FontAwesomeIcon className="mr-2" icon={faWindowClose} />
+            </button>
+          </div>
+        </div>
+      }
+
+      {this.state.editingCategory !== cat.id &&
+        <div>
+          <button className="btn p-0" onClick={ () => this.props.removeCategory(cat) }>
+            <FontAwesomeIcon className="mr-2" icon={faBomb} size="sm" />
+          </button>
+          <button className="btn p-0" onClick={ () => this.editCategory(cat) }>
+            <FontAwesomeIcon className="mr-2" icon={faEdit} size="sm" />
+          </button>
+          <Link to={`/products/categories/${cat.id}`}>{cat.category}</Link>
+        </div>
+      }
+    </li>
+  )
+}
+
+handleEditCategory = key => {
+  if (key.keyCode === 13) {
+    this.props.editCategory({
+      id: this.state.editingCategory,
+      category: this.refs['cat-' + this.state.editingCategory].value
+    })
+
+    this.setState({
+      editingCategory: ''
+    })
+  }
+}
+
+cancelEditing = () => {
+  this.setState({
+    editingCategory: ''
+  })
+}
+```

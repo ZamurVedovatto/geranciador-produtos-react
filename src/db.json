@@ -21,6 +21,7 @@
       "description": "Raquete"
     }
   ],
+
   "categories": [
     {
       "id": 1,
@@ -28,35 +29,11 @@
     },
     {
       "id": 2,
-      "category": "Cleaner"
-    },
-    {
-      "id": 3,
       "category": "Sport"
     },
     {
-      "category": "asas",
-      "id": 4
-    },
-    {
-      "category": "asas",
-      "id": 5
-    },
-    {
-      "category": "trt",
-      "id": 7
-    },
-    {
-      "category": "yty",
-      "id": 8
-    },
-    {
-      "category": "uyu",
-      "id": 9
-    },
-    {
-      "category": "uyu",
-      "id": 10
+      "category": "Eita",
+      "id": 3
     }
   ]
 }
