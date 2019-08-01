@@ -1,30 +1,18 @@
 import React, { Component } from 'react'
-import axios from 'axios'
 
 class Category extends Component {
   constructor(props) {
     super(props);
     this.loadData = this.loadData.bind(this)
     this.state = {
-      products: [],
-      category: {}
+      id: null
     }
   }
 
   loadData(id) {
-    axios.get(`http://localhost:3001/products?category=`+id)
-    .then(res => {
-      this.setState({
-        products: res.data
-      })
-    })
-
-    axios.get(`http://localhost:3001/categories/`+id)
-    .then(res => {
-      this.setState({
-        category: res.data
-      })
-    })
+    this.setState({ id })
+    this.props.loadProducts(id)
+    this.props.loadCategory(id)
   }
 
   componentDidMount() {
@@ -34,7 +22,9 @@ class Category extends Component {
 
   componentWillReceiveProps(newProps) {
     const id = newProps.match.params.catId;
-    this.loadData(id)
+    if (id !== this.state.id) {
+      this.loadData(id)
+    }
   }
 
   renderProduto(prod) {
@@ -48,10 +38,17 @@ class Category extends Component {
       <div className="mt-2">
         <nav aria-label="breadcrumb">
           <ol className="breadcrumb">
-            <li className="breadcrumb-item active" aria-current="page"><span style={customStyles.fz08rem}>Category</span> {this.state.category.category}</li>
+            <li className="breadcrumb-item active" aria-current="page">
+              <span style={customStyles.fz08rem}>Category</span>
+              {this.props.category &&
+                <span className="ml-1">
+                  {this.props.category.category}
+                </span>
+              }
+            </li>
           </ol>
         </nav>
-        {this.state.products.map(this.renderProduto)}
+        {this.props.products.map(this.renderProduto)}
       </div>
     )
   }

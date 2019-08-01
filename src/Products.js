@@ -118,7 +118,18 @@ class Products extends Component {
               />)
             }
           } />
-          <Route exact path={match.url + '/categories/:catId'} component={Category} />
+          <Route exact path={match.url + '/categories/:catId'} render={(props) => {
+            return (
+              <Category
+                {...props}
+                category={this.props.category}
+                products={this.props.products}
+                loadCategory={this.props.loadCategory}
+                loadProducts={this.props.loadProducts}
+                loadCategories={this.props.loadCategories}
+              />
+            )
+          }} />
         </div>
       </div>
     )

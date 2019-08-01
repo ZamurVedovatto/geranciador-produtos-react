@@ -4,7 +4,6 @@ import {
   Route,
   Link
 } from 'react-router-dom'
-
 import Home from './Home'
 import About from './About'
 import Products from './Products'
@@ -14,15 +13,28 @@ class App extends Component {
   constructor(props) {
     super(props)
 
+    this.loadCategory = this.loadCategory.bind(this)
     this.loadCategories = this.loadCategories.bind(this)
     this.removeCategory = this.removeCategory.bind(this)
     this.createCategory = this.createCategory.bind(this)
     this.editCategory = this.editCategory.bind(this)
     this.createProduct = this.createProduct.bind(this)
+    this.loadProducts = this.loadProducts.bind(this)
 
     this.state = {
-      categories: []
+      category: null,
+      categories: [],
+      products: []
     }
+  }
+
+  loadCategory (category) {
+    this.props.api.loadCategory(category)
+      .then((res) => {
+        this.setState({
+          category: res.data
+        })
+      })
   }
 
   loadCategories () {
@@ -52,9 +64,15 @@ class App extends Component {
   }
 
   createProduct (product) {
-    this.props.api.createProduct(product)
-      .then( () => {
+    return this.props.api.createProduct(product)
+  }
 
+  loadProducts(category) {
+    this.props.api.loadProducts(category)
+      .then(res => {
+        this.setState({
+          products: res.data
+        })
       })
   }
 
@@ -83,12 +101,16 @@ class App extends Component {
               return (
                 <Products
                   {...props}
+                  category={this.state.category}
+                  categories={this.state.categories}
+                  products={this.state.products}
+                  loadCategory={this.loadCategory}
                   loadCategories={this.loadCategories}
                   removeCategory={this.removeCategory}
                   createCategory={this.createCategory}
                   editCategory={this.editCategory}
-                  categories={this.state.categories}
                   createProduct={this.createProduct}
+                  loadProducts={this.loadProducts}
                 />)
               }
             }

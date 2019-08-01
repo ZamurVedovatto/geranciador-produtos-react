@@ -1,9 +1,13 @@
 import React, { Component } from 'react'
+import { Redirect } from 'react-router-dom'
 
 class NewProduct extends Component {
   constructor(props) {
     super(props)
     this.handleNewProduct = this.handleNewProduct.bind(this)
+    this.state = {
+      redirect: false
+    }
   }
 
   handleNewProduct() {
@@ -11,7 +15,12 @@ class NewProduct extends Component {
       description: this.refs.product.value,
       category: Number(this.refs.category.value)
     }
-    this.props.createProduct(product);
+    this.props.createProduct(product)
+      .then((res) => {
+        this.setState({
+          redirect: '/products/categories/' + product.category
+        })
+      })
   }
 
   renderSelectCategory(cat) {
@@ -22,6 +31,10 @@ class NewProduct extends Component {
 
   render () {
     const { categories } = this.props
+    if (this.state.redirect) {
+      return <Redirect to={this.state.redirect} />
+    }
+
     return (
       <div className="mt-2">
         <h4>New Product</h4>

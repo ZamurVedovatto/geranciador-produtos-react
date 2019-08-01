@@ -248,7 +248,7 @@ cancelEditing = () => {
 ```
 
 
-### 8. Create new Product
+### 9. Create new Product
 ```
 /* App.js */
 createProduct (product) {
@@ -332,3 +332,46 @@ class NewProduct extends Component {
 
 export default NewProduct
 ```
+
+
+
+### 10. Routes redirection
+```
+/* NewProduct.js */
+
+this.state = {
+  redirect: false
+}
+
+
+
+handleNewProduct() {
+  const product = {
+    description: this.refs.product.value,
+    category: Number(this.refs.category.value)
+  }
+  this.props.createProduct(product)
+    .then((res) => {
+      this.setState({
+        redirect: '/products/categories/' + product.category
+      })
+    })
+}
+
+
+  render () {
+    const { categories } = this.props
+    if (this.state.redirect) {
+      return <Redirect to={this.state.redirect} />
+    }
+
+    return (
+      ...
+      )
+  }
+}
+
+```
+
+
+### 11. Project Rearrange (part2)
