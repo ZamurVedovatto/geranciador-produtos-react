@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faBomb, faEdit, faWindowClose } from '@fortawesome/free-solid-svg-icons'
+import { faBomb, faEdit } from '@fortawesome/free-solid-svg-icons'
+import { Link } from 'react-router-dom'
 
 class Category extends Component {
   constructor(props) {
@@ -35,21 +36,26 @@ class Category extends Component {
     const id = this.props.match.params.catId
     return (
       <div key={prod.id}>
-        <p className='bg-light p-2'>
-          {prod.description}
+        <div className='bg-light p-2'>
+          <p>
+            {prod.description}
             <button className="btn p-0" onClick={ () => {
               this.props.removeProduct(prod)
                 .then(() => this.loadData(id))
               }
             }
             >
-            <FontAwesomeIcon className="mr-2" icon={faBomb} size="sm" />
-          </button>
-        </p>
+              <FontAwesomeIcon className="ml-2" icon={faBomb} size="sm" />
+            </button>
+            <Link to={'/products/edit/' + prod.id }>
+              <button className="btn p-0">
+                <FontAwesomeIcon className="ml-2" icon={faEdit} size="sm" />
+              </button>
+            </Link>
+          </p>
 
-        {/* <button className="btn p-0" onClick={ () => this.editProd(prod) }>
-          <FontAwesomeIcon className="mr-2" icon={faEdit} size="sm" />
-        </button> */}
+        </div>
+
       </div>
 
     )

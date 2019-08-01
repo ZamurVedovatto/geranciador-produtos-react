@@ -1,29 +1,19 @@
 {
   "products": [
     {
-      "id": 1,
-      "category": 1,
-      "description": "Pão"
-    },
-    {
       "id": 2,
-      "category": 1,
-      "description": "Pão Doce"
+      "description": "Pão Doce",
+      "category": "4"
     },
     {
       "id": 4,
-      "category": 3,
-      "description": "Raquete"
+      "description": "Raqueteeee",
+      "category": "1"
     },
     {
-      "description": "1111",
-      "category": 4,
-      "id": 5
-    },
-    {
-      "description": "alimeno",
-      "category": 1,
-      "id": 6
+      "id": 5,
+      "description": "111",
+      "category": "4"
     }
   ],
   "categories": [

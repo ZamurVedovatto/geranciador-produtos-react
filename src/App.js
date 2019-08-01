@@ -19,6 +19,8 @@ class App extends Component {
     this.createCategory = this.createCategory.bind(this)
     this.editCategory = this.editCategory.bind(this)
     this.createProduct = this.createProduct.bind(this)
+    this.readProduct = this.readProduct.bind(this)
+    this.editProduct = this.editProduct.bind(this)
     this.removeProduct = this.removeProduct.bind(this)
     this.loadProducts = this.loadProducts.bind(this)
 
@@ -72,6 +74,14 @@ class App extends Component {
     return this.props.api.deleteProduct(product.id)
   }
 
+  readProduct(id) {
+    return this.props.api.readProduct(id)
+  }
+
+  editProduct(product) {
+    return this.props.api.editProduct(product)
+  }
+
   loadProducts(category) {
     this.props.api.loadProducts(category)
       .then(res => {
@@ -115,6 +125,8 @@ class App extends Component {
                   createCategory={this.createCategory}
                   editCategory={this.editCategory}
                   createProduct={this.createProduct}
+                  editProduct={this.editProduct}
+                  readProduct={this.readProduct}
                   removeProduct={this.removeProduct}
                   loadProducts={this.loadProducts}
                 />)

@@ -132,11 +132,12 @@ class Products extends Component {
               />
             )
           }} />
-          <Route path={match.url + 'edit/:id'} render={(props) => {
+          <Route path={match.url + '/edit/:id'} render={(props) => {
             return <ProductEdit
                 {...props}
-                readProduct={1}
-                editProduct={1}
+                categories={categories}
+                readProduct={this.props.readProduct}
+                editProduct={this.props.editProduct}
               />
           }} />
         </div>
