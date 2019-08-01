@@ -12,7 +12,6 @@ class Category extends Component {
   }
 
   loadData(id) {
-    console.log(id)
     axios.get(`http://localhost:3001/products?category=`+id)
     .then(res => {
       this.setState({
@@ -46,7 +45,7 @@ class Category extends Component {
 
   render () {
     return (
-      <div>
+      <div className="mt-2">
         <nav aria-label="breadcrumb">
           <ol className="breadcrumb">
             <li className="breadcrumb-item active" aria-current="page"><span style={customStyles.fz08rem}>Category</span> {this.state.category.category}</li>

@@ -19,9 +19,33 @@
       "id": 4,
       "category": 3,
       "description": "Raquete"
+    },
+    {
+      "description": "asasas",
+      "category": 3,
+      "id": 5
+    },
+    {
+      "description": "bbbb",
+      "category": 3,
+      "id": 6
+    },
+    {
+      "description": "asasasas",
+      "category": 1,
+      "id": 7
+    },
+    {
+      "description": "asasasasasas",
+      "category": 1,
+      "id": 8
+    },
+    {
+      "description": "novo",
+      "category": 4,
+      "id": 9
     }
   ],
-
   "categories": [
     {
       "id": 1,
@@ -34,6 +58,10 @@
     {
       "category": "Eita",
       "id": 3
+    },
+    {
+      "category": "nova",
+      "id": 4
     }
   ]
 }

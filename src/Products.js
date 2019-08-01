@@ -103,12 +103,22 @@ class Products extends Component {
               onKeyUp={this.handleNewCategory}
             />
           </div>
+          <Link to={'/products/new'} >
+            <button className="mt-2 btn btn-info btn-block">Add Product</button>
+          </Link>
         </div>
         <div className="col-md-6 col-sm-12">
-          <h4 className="text-info">Products</h4>
-            <Route exact path={match.url} component={ProductsHome} />
-            <Route exact path={match.url + '/new'} component={NewProduct} />
-            <Route exact path={match.url + '/categories/:catId'} component={Category} />
+          <Route exact path={match.url} component={ProductsHome} />
+          <Route exact path={match.url + '/new'} render={(props) => {
+            return (
+              <NewProduct
+                {...props}
+                categories={categories}
+                createProduct={this.props.createProduct}
+              />)
+            }
+          } />
+          <Route exact path={match.url + '/categories/:catId'} component={Category} />
         </div>
       </div>
     )

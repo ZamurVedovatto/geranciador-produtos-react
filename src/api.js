@@ -5,10 +5,14 @@ const api = axios.create({
 })
 
 const apis = {
+  // Category endpoints
   loadCategories: () => api.get('categories'),
   deleteCategory: (id) => api.delete('categories/' + id),
   createCategory: (category) => api.post('categories', category),
-  editCategory: (category) => api.put('categories/' + category.id, category)
+  editCategory: (category) => api.put('categories/' + category.id, category),
+
+  // Product endpoints
+  createProduct: (product) => api.post('products', product)
 }
 
 export default apis
