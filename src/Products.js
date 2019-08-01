@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Route, Link } from 'react-router-dom'
 import ProductsHome from './ProductsHome'
 import NewProduct from './NewProduct'
+import ProductEdit from './ProductEdit'
 import Category from './Category'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBomb, faEdit, faWindowClose } from '@fortawesome/free-solid-svg-icons'
@@ -125,10 +126,18 @@ class Products extends Component {
                 category={this.props.category}
                 products={this.props.products}
                 loadCategory={this.props.loadCategory}
-                loadProducts={this.props.loadProducts}
                 loadCategories={this.props.loadCategories}
+                loadProducts={this.props.loadProducts}
+                removeProduct={this.props.removeProduct}
               />
             )
+          }} />
+          <Route path={match.url + 'edit/:id'} render={(props) => {
+            return <ProductEdit
+                {...props}
+                readProduct={1}
+                editProduct={1}
+              />
           }} />
         </div>
       </div>

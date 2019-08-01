@@ -1,9 +1,13 @@
 import React, { Component } from 'react'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faBomb, faEdit, faWindowClose } from '@fortawesome/free-solid-svg-icons'
 
 class Category extends Component {
   constructor(props) {
     super(props);
+
     this.loadData = this.loadData.bind(this)
+    this.renderProduct = this.renderProduct.bind(this)
     this.state = {
       id: null
     }
@@ -27,9 +31,27 @@ class Category extends Component {
     }
   }
 
-  renderProduto(prod) {
+  renderProduct(prod) {
+    const id = this.props.match.params.catId
     return (
-      <p className='bg-light p-2' key={prod.id}>{prod.description}</p>
+      <div key={prod.id}>
+        <p className='bg-light p-2'>
+          {prod.description}
+            <button className="btn p-0" onClick={ () => {
+              this.props.removeProduct(prod)
+                .then(() => this.loadData(id))
+              }
+            }
+            >
+            <FontAwesomeIcon className="mr-2" icon={faBomb} size="sm" />
+          </button>
+        </p>
+
+        {/* <button className="btn p-0" onClick={ () => this.editProd(prod) }>
+          <FontAwesomeIcon className="mr-2" icon={faEdit} size="sm" />
+        </button> */}
+      </div>
+
     )
   }
 
@@ -48,14 +70,16 @@ class Category extends Component {
             </li>
           </ol>
         </nav>
-        {this.props.products.map(this.renderProduto)}
+        {this.props.products.length === 0 &&
+          <p className="alert alert-danger">No registered products</p>
+        }
+        {this.props.products.map(this.renderProduct)}
       </div>
     )
   }
 }
 
 export default Category
-
 
 const customStyles = {
   "fz08rem": {

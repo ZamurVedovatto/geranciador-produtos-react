@@ -14,6 +14,7 @@ const apis = {
 
   // Product endpoints
   createProduct: (product) => api.post('products', product),
+  deleteProduct: (id) => api.delete('products/' + id),
   loadProducts: (category) => api.get('products?category=' + category)
 }
 

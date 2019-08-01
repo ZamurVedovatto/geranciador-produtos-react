@@ -11,69 +11,19 @@
       "description": "Pão Doce"
     },
     {
-      "id": 3,
-      "category": 2,
-      "description": "Sabão"
-    },
-    {
       "id": 4,
       "category": 3,
       "description": "Raquete"
     },
     {
-      "description": "asasas",
-      "category": 3,
+      "description": "1111",
+      "category": 4,
       "id": 5
     },
     {
-      "description": "bbbb",
-      "category": 3,
+      "description": "alimeno",
+      "category": 1,
       "id": 6
-    },
-    {
-      "description": "asasasas",
-      "category": 1,
-      "id": 7
-    },
-    {
-      "description": "asasasasasas",
-      "category": 1,
-      "id": 8
-    },
-    {
-      "description": "novo",
-      "category": 4,
-      "id": 9
-    },
-    {
-      "description": "sport1",
-      "category": 2,
-      "id": 10
-    },
-    {
-      "description": "nova2",
-      "category": 4,
-      "id": 11
-    },
-    {
-      "description": "asasasasa1",
-      "category": 1,
-      "id": 12
-    },
-    {
-      "description": "asas",
-      "category": 3,
-      "id": 13
-    },
-    {
-      "description": "asas",
-      "category": 2,
-      "id": 14
-    },
-    {
-      "description": "4545",
-      "category": 1,
-      "id": 15
     }
   ],
   "categories": [

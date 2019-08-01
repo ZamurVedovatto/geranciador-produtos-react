@@ -104,7 +104,7 @@ componentWillReceiveProps(newProps) {
   this.loadData(id)
 }
 
-renderProduto(prod) {
+renderProduct(prod) {
   return (
     <p className='bg-light p-2' key={prod.id}>{prod.description}</p>
   )
@@ -114,7 +114,7 @@ render () {
   return (
     <div>
       <h4>Category {this.props.match.params.catId}</h4>
-      {this.state.products.map(this.renderProduto)}
+      {this.state.products.map(this.renderProduct)}
     </div>
   )
 }
@@ -375,3 +375,7 @@ handleNewProduct() {
 
 
 ### 11. Project Rearrange (part2)
+
+### 12. Remove Product
+
+### 13. Edit Product
